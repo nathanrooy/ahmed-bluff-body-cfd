@@ -92,9 +92,8 @@ castellatedMeshControls
     (
         {
             file "motorBike.eMesh";
-            level 7;
+            level 9;
         }
-
     );
 
 
@@ -113,7 +112,7 @@ castellatedMeshControls
         motorBike
         {
             // Surface-wise min and max refinement level
-            level (5 6);
+            level (8 9);
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.
