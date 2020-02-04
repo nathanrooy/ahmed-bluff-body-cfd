@@ -34,11 +34,25 @@ geometry
         name motorBike;
     }
 
-    refinementBox
+    refinementBox_1
     {
         type searchableBox;
         min (-1.0 -0.7 0.0);
         max ( 8.0  0.7 2.5);
+    }
+    
+    refinementBox_2
+    {
+        type searchableBox;
+        min (-0.7 -0.6 0.0);
+        max ( 4.0  0.6 1.5);
+    }
+    
+    refinementBox_3
+    {
+        type searchableBox;
+        min (-0.5 -0.5 0.0);
+        max ( 2.0  0.5 0.8);
     }
 };
 
@@ -88,12 +102,13 @@ castellatedMeshControls
 
     // Specifies a level for any cell intersected by its edges.
     // This is a featureEdgeMesh, read from constant/triSurface for now.
+    
     features
     (
-        {
-            file "motorBike.eMesh";
-            level 9;
-        }
+//        {
+//            file "motorBike.eMesh";
+//            level 9;
+//        }
     );
 
 
@@ -112,7 +127,7 @@ castellatedMeshControls
         motorBike
         {
             // Surface-wise min and max refinement level
-            level (8 9);
+            level (9 10);
 
             // Optional specification of patch type (default is wall). No
             // constraint types (cyclic, symmetry) etc. are allowed.
@@ -143,10 +158,22 @@ castellatedMeshControls
 
     refinementRegions
     {
-        refinementBox
+        refinementBox_1
         {
             mode inside;
-            levels ((1E15 4));
+            levels ((1E15 5));
+        }
+        
+        refinementBox_2
+        {
+            mode inside;
+            levels ((1E15 6));
+        }
+        
+        refinementBox_3
+        {
+            mode inside;
+            levels ((1E15 7));
         }
     }
 
@@ -218,9 +245,14 @@ addLayersControls
     // Per final patch (so not geometry!) the layer information
     layers
     {
-        "(lowerWall|motorBike).*"
+        lowerWall
         {
-            nSurfaceLayers 1;
+            nSurfaceLayers 5;
+        }
+        
+        motorBike
+        {
+            nSurfaceLayers 10;
         }
     }
 
