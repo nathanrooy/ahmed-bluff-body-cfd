@@ -65,4 +65,27 @@ Ahmed bluff body geometry and OpenFOAM validation runs
     <td>0.247</td>
     <td>0.159</td>
   </tr>
+  <tr>
+    <th rowspan="4">cfd</th>
+    <td>20</td>
+    <td>0.262</td>
+    <td>0.284</td>
+    <th rowspan="4">Ansys Fluent</th>
+    <th rowspan="4"><a href="http://www.iosrjournals.org/iosr-jmce/papers/vol12-issue4/Version-3/M012438794.pdf">link</a></th>
+  </tr>
+  <tr>
+    <td>30</td>
+    <td>0.298</td>
+    <td>0.348</td>
+  </tr>
+  <tr>
+    <td>35</td>
+    <td>0.295</td>
+    <td>0.206</td>
+  </tr>
+  <tr>
+    <td>40</td>
+    <td>0.250</td>
+    <td>0.008</td>
+  </tr>
 </table>
