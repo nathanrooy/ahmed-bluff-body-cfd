@@ -1,2 +1,68 @@
 # ahmed-bluff-body
 Ahmed bluff body geometry and OpenFOAM validation runs
+
+
+<table style="width:100%">
+  <tr>
+    <td>type</td>
+    <td>declid angle</td>
+    <td>c_d</td>
+    <td>c_l</td>
+    <td>solver</td>
+    <td>source</td>
+  </tr>
+  <tr>
+    <td>exp</td>
+    <th rowspan="7">25</th>
+    <td>0.299</td>
+    <td>0.345</td>
+    <td>---</td>
+    <th rowspan="11"><a href="https://online.tugraz.at/tug_online/voe_main2.getVollText?pDocumentNr=81599">link</a></th>
+  </tr>
+  <tr>
+    <th rowspan="6">cfd</th>
+    <td>0.300</td>
+    <td>0.316</td>
+    <th rowspan="6">simpleFOAM</th>
+  </tr>
+  <tr>
+    <td>0.266</td>
+    <td>0.325</td>
+  </tr>
+  <tr>
+    <td>0.274</td>
+    <td>0.330</td>
+  </tr>
+  <tr>
+    <td>0.250</td>
+    <td>0.306</td>
+  </tr>
+  <tr>
+    <td>0.260</td>
+    <td>0.305</td>
+  </tr>
+  <tr>
+    <td>0.301</td>
+    <td>0.307</td>
+  </tr>
+  <tr>
+    <td>exp</td>
+    <th rowspan="4">35</td>
+    <td>0.279</td>
+    <td>0.004</td>
+    <td>---</td>
+  <tr>
+    <th rowspan="3">cfd</th>
+    <td>0.313</td>
+    <td>0.212</td>
+    <th rowspan="3">simpleFOAM</th>
+  </tr>
+  <tr>
+    <td>0.292</td>
+    <td>0.156</td>
+  </tr>
+  <tr>
+    <td>0.247</td>
+    <td>0.159</td>
+  </tr>
+</table>
