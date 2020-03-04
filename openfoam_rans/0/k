@@ -41,7 +41,7 @@ boundaryField
         value           $internalField;
     }
 
-    motorBikeGroup
+    ahmed_bodyGroup
     {
         type            kqRWallFunction;
         value           $internalField;

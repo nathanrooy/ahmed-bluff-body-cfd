@@ -17,7 +17,7 @@ forceCoeffs1
 
     log             yes;
 
-    patches         (motorBikeGroup);
+    patches         (ahmed_bodyGroup);
     rho             rhoInf;      // Indicates incompressible
     rhoInf          1;           // Redundant for incompressible
     liftDir         (0 0 1);

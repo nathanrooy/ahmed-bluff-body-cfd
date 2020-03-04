@@ -31,7 +31,7 @@ geometry
     ahmed_25deg_m.stl
     {
         type triSurfaceMesh;
-        name motorBike;
+        name ahmed_body;
     }
 
     refinementBox_1
@@ -106,7 +106,7 @@ castellatedMeshControls
     features
     (
 //        {
-//            file "motorBike.eMesh";
+//            file "ahmed_body.eMesh";
 //            level 9;
 //        }
     );
@@ -124,7 +124,7 @@ castellatedMeshControls
 
     refinementSurfaces
     {
-        motorBike
+        ahmed_body
         {
             // Surface-wise min and max refinement level
             level (9 10);
@@ -134,7 +134,7 @@ castellatedMeshControls
             patchInfo
             {
                 type wall;
-                inGroups (motorBikeGroup);
+                inGroups (ahmed_bodyGroup);
             }
         }
     }
@@ -250,7 +250,7 @@ addLayersControls
             nSurfaceLayers 5;
         }
         
-        motorBike
+        ahmed_body
         {
             nSurfaceLayers 10;
         }

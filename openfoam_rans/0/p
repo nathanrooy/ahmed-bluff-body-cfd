@@ -41,7 +41,7 @@ boundaryField
         type            zeroGradient;
     }
 
-    motorBikeGroup
+    ahmed_bodyGroup
     {
         type            zeroGradient;
     }

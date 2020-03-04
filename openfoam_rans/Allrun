@@ -12,7 +12,7 @@ runParallel snappyHexMesh -overwrite
 
 runParallel patchSummary
 runParallel potentialFoam
-runParallel $(getApplication)
+runParallel simpleFoam
 
 runApplication reconstructParMesh -constant
 runApplication reconstructPar -latestTime

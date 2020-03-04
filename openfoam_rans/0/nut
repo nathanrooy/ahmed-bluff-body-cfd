@@ -54,7 +54,7 @@ boundaryField
         value           uniform 0;
     }
 
-    motorBikeGroup
+    ahmed_bodyGroup
     {
         type            nutkWallFunction;
         value           uniform 0;
