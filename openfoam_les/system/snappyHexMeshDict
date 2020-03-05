@@ -17,7 +17,7 @@ FoamFile
 // Which of the steps to run
 castellatedMesh true;
 snap            true;
-addLayers       false;
+addLayers       true;
 
 
 // Geometry. Definition of all surfaces. All surfaces are of class
@@ -34,12 +34,25 @@ geometry
         name ahmed_body;
     }
 
-    // Analytical shape; cylinder, sphere
-    refinementBox
+    refinementBox_1
     {
         type searchableBox;
         min (-1.0 -0.7 0.0);
         max ( 8.0  0.7 2.5);
+    }
+    
+    refinementBox_2
+    {
+        type searchableBox;
+        min (-0.7 -0.6 0.0);
+        max ( 4.0  0.6 1.5);
+    }
+    
+    refinementBox_3
+    {
+        type searchableBox;
+        min (-0.5 -0.5 0.0);
+        max ( 2.0  0.5 0.8);
     }
 };
 
@@ -62,7 +75,7 @@ castellatedMeshControls
     // Note that this is the number of cells before removing the part which
     // is not 'visible' from the keepPoint. The final number of cells might
     // actually be a lot less.
-    maxGlobalCells 7000000;
+    maxGlobalCells 2000000;
 
     // The surface refinement loop might spend lots of iterations refining just a
     // few cells. This setting will cause refinement to stop if <= minimumRefine
@@ -89,12 +102,13 @@ castellatedMeshControls
 
     // Specifies a level for any cell intersected by its edges.
     // This is a featureEdgeMesh, read from constant/triSurface for now.
+    
     features
     (
-        //{
-        //    file "someLine.eMesh";
-        //    level 2;
-        //}
+//        {
+//            file "ahmed_body.eMesh";
+//            level 9;
+//        }
     );
 
 
@@ -113,8 +127,10 @@ castellatedMeshControls
         ahmed_body
         {
             // Surface-wise min and max refinement level
-            level (6 8);
-            
+            level (9 10);
+
+            // Optional specification of patch type (default is wall). No
+            // constraint types (cyclic, symmetry) etc. are allowed.
             patchInfo
             {
                 type wall;
@@ -124,7 +140,7 @@ castellatedMeshControls
     }
 
     // Resolve sharp angles
-    resolveFeatureAngle 60;
+    resolveFeatureAngle 30;
 
 
     // Region-wise refinement
@@ -142,10 +158,22 @@ castellatedMeshControls
 
     refinementRegions
     {
-        refinementBox
+        refinementBox_1
         {
             mode inside;
             levels ((1E15 5));
+        }
+        
+        refinementBox_2
+        {
+            mode inside;
+            levels ((1E15 6));
+        }
+        
+        refinementBox_3
+        {
+            mode inside;
+            levels ((1E15 7));
         }
     }
 
@@ -158,13 +186,13 @@ castellatedMeshControls
     // section reachable from the locationInMesh is kept.
     // NOTE: This point should never be on a face, always inside a cell, even
     // after refinement.
-    locationInMesh (3 3 0.43);
+    locationInMesh (3.0001 3.0001 0.43);
 
 
     // Whether any faceZones (as specified in the refinementSurfaces)
     // are only on the boundary of corresponding cellZones or also allow
     // free-standing zone faces. Not used if there are no faceZones.
-    allowFreeStandingZoneFaces false;
+    allowFreeStandingZoneFaces true;
 }
 
 
@@ -179,7 +207,7 @@ snapControls
     //- Relative distance for points to be attracted by surface feature point
     //  or edge. True distance is this factor times local
     //  maximum edge length.
-    tolerance 4.0;
+    tolerance 2.0;
 
     //- Number of mesh displacement relaxation iterations.
     nSolveIter 30;
@@ -187,8 +215,23 @@ snapControls
     //- Maximum number of snapping relaxation iterations. Should stop
     //  before upon reaching a correct mesh.
     nRelaxIter 5;
-}
 
+    // Feature snapping
+
+        //- Number of feature edge snapping iterations.
+        //  Leave out altogether to disable.
+        nFeatureSnapIter 10;
+
+        //- Detect (geometric only) features by sampling the surface
+        //  (default=false).
+        implicitFeatureSnap false;
+
+        //- Use castellatedMeshControls::features (default = true)
+        explicitFeatureSnap true;
+
+        //- Detect points on multiple surfaces (only for explicitFeatureSnap)
+        multiRegionFeatureSnap false;
+}
 
 
 // Settings for the layer addition.
@@ -203,12 +246,12 @@ addLayersControls
     {
         lowerWall
         {
-            nSurfaceLayers 2;
+            nSurfaceLayers 5;
         }
         
         ahmed_body
         {
-            nSurfaceLayers 2;
+            nSurfaceLayers 10;
         }
     }
 
@@ -229,14 +272,18 @@ addLayersControls
     // If points get not extruded do nGrow layers of connected faces that are
     // also not grown. This helps convergence of the layer addition process
     // close to features.
+    // Note: changed(corrected) w.r.t 17x! (didn't do anything in 17x)
     nGrow 0;
-
 
     // Advanced settings
 
     // When not to extrude surface. 0 is flat surface, 90 is when two faces
     // are perpendicular
     featureAngle 60;
+
+    // At non-patched sides allow mesh to slip if extrusion direction makes
+    // angle larger than slipFeatureAngle.
+    slipFeatureAngle 30;
 
     // Maximum number of snapping relaxation iterations. Should stop
     // before upon reaching a correct mesh.
@@ -249,7 +296,7 @@ addLayersControls
     nSmoothNormals 3;
 
     // Smooth layer thickness over surface patches
-    nSmoothThickness 2;
+    nSmoothThickness 10;
 
     // Stop layer growth on highly warped cells
     maxFaceThicknessRatio 0.5;
@@ -259,12 +306,17 @@ addLayersControls
     maxThicknessToMedialRatio 0.3;
 
     // Angle used to pick up medial axis points
+    // Note: changed(corrected) w.r.t 17x! 90 degrees corresponds to 130 in 17x.
     minMedianAxisAngle 90;
+
 
     // Create buffer region for new layer terminations
     nBufferCellsNoExtrude 0;
 
-    // Overall max number of layer addition iterations
+
+    // Overall max number of layer addition iterations. The mesher will exit
+    // if it reaches this number of iterations; possibly with an illegal
+    // mesh.
     nLayerIter 50;
 }
 
@@ -333,3 +385,4 @@ mergeTolerance 1E-6;
 
 
 // ************************************************************************* //
+
