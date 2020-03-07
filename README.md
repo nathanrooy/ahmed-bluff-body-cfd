@@ -1,7 +1,9 @@
 # ahmed-bluff-body
 Ahmed bluff body geometry and OpenFOAM validation runs
 
+### Current results
 
+### Existing results
 <table style="width:100%">
   <tr>
     <td>type</td>
@@ -89,3 +91,18 @@ Ahmed bluff body geometry and OpenFOAM validation runs
     <td>0.008</td>
   </tr>
 </table>
+
+### OpenFOAM run info
+| refinement level | layer thickness (m) |
+| --- | --- |
+| 0 | 1 |
+| 1	| 0.5 |
+| 2	| 0.25 |
+| 3	| 0.125 |
+| 4	| 0.0625 |
+| 5	| 0.03125 |
+| 6	| 0.015625 |
+| 7	| 0.0078125 |
+| 8	| 0.00390625 |
+| 9	| 0.001953125 |
+| 10 | 0.0009765625 |
