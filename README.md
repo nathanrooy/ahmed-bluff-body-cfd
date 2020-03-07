@@ -1,7 +1,23 @@
-# ahmed-bluff-body
+# Ahmed Bluff Body CFD Validation
 Ahmed bluff body geometry and OpenFOAM validation runs
 
 ### Current results
+
+| case_id | case directory | declid angle | solver | turbulence model | c_d | c_l |
+| --- | :--- | --- | --- | --- | --- | --- |
+| 1-A | openfoam_rans | 25 | simpleFoam | | | |
+| 1-B | openfoam_rans | 35 | simpleFoam | | | |
+| 2-A | openfoam_les | 25 | pisoFoam | | | |
+| 2-B | openfoam_les | 35 | pisoFoam | | | |
+
+<b>Mesh properties by case </b>
+| case_id | cell count | y+ min | y+ max | y+ mean |  snappyHexMeshDict |
+| --- | --- | --- | --- | --- | --- |
+| 1-A | | | | | snappyHexMeshDict_1A |
+| 1-B | | | | | snappyHexMeshDict_1B |
+| 2-A | | | | | snappyHexMeshDict_2A |
+| 2-B | | | | | snappyHexMeshDict_2B |
+
 
 ### Existing results
 <table style="width:100%">
@@ -25,7 +41,7 @@ Ahmed bluff body geometry and OpenFOAM validation runs
     <th rowspan="6">cfd</th>
     <td>0.300</td>
     <td>0.316</td>
-    <th rowspan="6">simpleFOAM</th>
+    <th rowspan="6">simpleFoam</th>
   </tr>
   <tr>
     <td>0.266</td>
@@ -57,7 +73,7 @@ Ahmed bluff body geometry and OpenFOAM validation runs
     <th rowspan="3">cfd</th>
     <td>0.313</td>
     <td>0.212</td>
-    <th rowspan="3">simpleFOAM</th>
+    <th rowspan="3">simpleFoam</th>
   </tr>
   <tr>
     <td>0.292</td>
