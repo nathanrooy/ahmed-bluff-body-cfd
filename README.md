@@ -3,7 +3,7 @@ Ahmed bluff body geometry and OpenFOAM validation runs
 
 ### Current results
 
-| case_id | case directory | declid angle | solver | turbulence model | c_d | c_l |
+| case_id | case directory | decklid angle | solver | turbulence model | c_d | c_l |
 | --- | :--- | --- | --- | --- | --- | --- |
 | 1-A | openfoam_rans | 25 | simpleFoam | | | |
 | 1-B | openfoam_rans | 35 | simpleFoam | | | |
@@ -23,7 +23,7 @@ Ahmed bluff body geometry and OpenFOAM validation runs
 <table style="width:100%">
   <tr>
     <td>type</td>
-    <td>declid angle</td>
+    <td>decklid angle</td>
     <td>c_d</td>
     <td>c_l</td>
     <td>solver</td>
