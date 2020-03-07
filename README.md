@@ -5,10 +5,10 @@ Ahmed bluff body geometry and OpenFOAM validation runs
 
 | case_id | case directory | decklid angle | solver | turbulence model | c_d | c_l |
 | --- | :--- | --- | --- | --- | --- | --- |
-| 1-A | openfoam_rans | 25 | simpleFoam | | | |
-| 1-B | openfoam_rans | 35 | simpleFoam | | | |
-| 2-A | openfoam_les | 25 | pisoFoam | | | |
-| 2-B | openfoam_les | 35 | pisoFoam | | | |
+| 1-A | openfoam_rans | 25 | simpleFoam | RAS - kOmegaSST | | |
+| 1-B | openfoam_rans | 35 | simpleFoam | RAS - kOmegaSST | | |
+| 2-A | openfoam_les | 25 | pisoFoam | LES - SpalartAllmarasDDES | | |
+| 2-B | openfoam_les | 35 | pisoFoam | LES - SpalartAllmarasDDES | | |
 
 <b>Mesh properties by case </b>
 | case_id | cell count | y+ min | y+ max | y+ mean |  snappyHexMeshDict |
