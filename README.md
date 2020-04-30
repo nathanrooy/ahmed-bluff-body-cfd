@@ -1,5 +1,6 @@
 # Ahmed Bluff Body CFD Validation
 The purpose of this repo is to serve as a starting point for further automotive/motorsport CFD or as a resource for CFD code validation. The Ahmed bluff body geometry is included so anyone can use it their simulations. If you would like to add a validation case, please open a pull request and I'll add it! Thanks!
+<center><p><img src="docs/ahmed.gif"></p></center>
 
 ### Current results
 
