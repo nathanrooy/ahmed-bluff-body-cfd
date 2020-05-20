@@ -4,16 +4,18 @@ cd ${0%/*} || exit 1    # Run from this directory
 # Source tutorial run functions
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
 
-# run everything
+# mesh
+runApplication surfaceFeatures
 runApplication blockMesh
-
 runApplication decomposePar -copyZero
 runParallel snappyHexMesh -overwrite
 
+# solve
 runParallel patchSummary
 runParallel potentialFoam
 runParallel simpleFoam
 
+# munge
 runApplication reconstructParMesh -constant
 runApplication reconstructPar -latestTime
 
