@@ -4,20 +4,22 @@ The purpose of this repo is to serve as a starting point for further automotive/
 
 ### Current results
 
-| case_id | case directory | decklid angle | solver | turbulence model | c_d | c_l |
-| --- | :--- | --- | --- | --- | --- | --- |
-| 1-A | openfoam_rans | 25 | simpleFoam | RAS - kOmegaSST | | |
-| 1-B | openfoam_rans | 35 | simpleFoam | RAS - kOmegaSST | | |
-| 2-A | openfoam_les | 25 | pisoFoam | LES - SpalartAllmarasDDES | | |
-| 2-B | openfoam_les | 35 | pisoFoam | LES - SpalartAllmarasDDES | | |
+| case_id | case directory | decklid angle | solver | turbulence model | c_d | c_d error | c_l | c_l error |
+| --- | :--- | --- | --- | --- | --- | --- | --- | --- |
+| 1-A | openfoam_rans | 25 | simpleFoam | RAS - kOmegaSST | 0.299 | 0.000 | 0.339 | -0.006 |
+| 1-B | openfoam_rans | 35 | simpleFoam | RAS - kOmegaSST | | | | |
+| 2-A | openfoam_les | 25 | pisoFoam | LES - SpalartAllmarasDDES | | | | | 
+| 2-B | openfoam_les | 35 | pisoFoam | LES - SpalartAllmarasDDES | | | | |
+* c_d and c_l values are calculated by averaging the last 50 time steps for rans case
 
 <b>Mesh properties by case </b>
 | case_id | cell count | y+ min | y+ max | y+ mean |  snappyHexMeshDict |
 | --- | --- | --- | --- | --- | --- |
-| 1-A | | | | | snappyHexMeshDict_1A |
+| 1-A | 8,250,693 | 0.313 | 340.130 | 13.244 | snappyHexMeshDict_1A |
 | 1-B | | | | | snappyHexMeshDict_1B |
 | 2-A | | | | | snappyHexMeshDict_2A |
 | 2-B | | | | | snappyHexMeshDict_2B |
+* y+ values are for ahmed-body only
 
 
 ### Existing results
@@ -108,18 +110,3 @@ The purpose of this repo is to serve as a starting point for further automotive/
     <td>0.008</td>
   </tr>
 </table>
-
-### OpenFOAM run info
-| refinement level | layer thickness (m) |
-| --- | --- |
-| 0 | 1 |
-| 1	| 0.5 |
-| 2	| 0.25 |
-| 3	| 0.125 |
-| 4	| 0.0625 |
-| 5	| 0.03125 |
-| 6	| 0.015625 |
-| 7	| 0.0078125 |
-| 8	| 0.00390625 |
-| 9	| 0.001953125 |
-| 10 | 0.0009765625 |
