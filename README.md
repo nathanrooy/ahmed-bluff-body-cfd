@@ -4,7 +4,7 @@ The purpose of this repo is to serve as a starting point for further automotive/
 
 ### Current results
 
-| case_id | case directory | decklid angle | solver | turbulence model | c_d | c_d error | c_l | c_l error |
+| case_id | case directory | decklid angle | solver | turbulence model | c<sub>d</sub> | c<sub>d</sub> error | c<sub>l</sub> | c<sub>l</sub> error |
 | --- | :--- | --- | --- | --- | --- | --- | --- | --- |
 | 1-A | openfoam_rans | 25 | simpleFoam | RAS - kOmegaSST | 0.299 | 0.000 | 0.339 | -0.006 |
 | 1-B | openfoam_rans | 35 | simpleFoam | RAS - kOmegaSST | | | | |
@@ -27,8 +27,8 @@ The purpose of this repo is to serve as a starting point for further automotive/
   <tr>
     <td>type</td>
     <td>decklid angle</td>
-    <td>c_d</td>
-    <td>c_l</td>
+    <td>c<sub>d</sub></td>
+    <td>c<sub>l</sub></td>
     <td>solver</td>
     <td>source</td>
   </tr>
